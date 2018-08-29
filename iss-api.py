@@ -4,7 +4,7 @@
 import requests
 from datetime import datetime
 
-print("\nThis program uses data from NASA's open source Open Notify API. Check it out at http://open-notify.org")
+print("\nThis program uses NASA data and the open source Open Notify API. Check it out at http://open-notify.org")
 
 print("\nAbout the International Space Station (ISS)")
 print("===========================================")
