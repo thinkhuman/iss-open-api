@@ -4,6 +4,12 @@
 import requests
 from datetime import datetime
 
+print("\nThis program uses data from NASA's open source Open Notify API. Check it out at http://open-notify.org")
+
+print("\nAbout the International Space Station (ISS)")
+print("===========================================")
+print("The ISS travels at approximately 17,150 MPH and completes an orbit every 92 minutes.")
+
 
 # ISS Pass Times
 ##############################################
@@ -31,14 +37,20 @@ iss_loc = response.json()
 
 ts = int(iss_loc['timestamp'])
 
-print("\nhe ISS is currently at:")
-print("===============================")
+print("\nThe ISS is currently at:")
+print("========================")
 print("Position: \nLATITUDE: {}  LONGITUDE: {}".format(iss_loc["iss_position"]['latitude'], iss_loc["iss_position"]['longitude']) )
-print("\nDate/Time: \n{}".format(datetime.utcfromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')))# People in Space
+print("\nDate/Time: \n{}".format(datetime.utcfromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')))
+
+
+# People in Space
 ###############################################
+
 # Show the current number of people in space! 
 response = requests.get("http://api.open-notify.org/astros.json")
 
 astros = response.json()
 
-print("\nThere are currently {} astronauts in space.\n".format(astros["number"]))
+print("\nHow many astronauts are in space right now?")
+print("===========================================")
+print("There are currently {} astronauts in space.\n".format(astros["number"]))
