@@ -14,6 +14,7 @@ print("The ISS travels at approximately 17,150 MPH and completes an orbit every 
 # ISS Pass Times
 ##############################################
 # params for iss-pass : latitude and longitude
+# To find a latitude and longitude to use, try https://www.latlong.net/
 parameters = {"lat": 45.5214400  , "lon": -122.6769200}
 
 # Make a get request to get the latest position of the international space station from the opennotify api.
