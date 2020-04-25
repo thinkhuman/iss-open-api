@@ -3,10 +3,12 @@
 
 import requests
 from datetime import datetime
+from colorama import init, Fore, Back, Style
+init()
 
-print("\nThis program uses NASA data and the open source Open Notify API. Check it out at http://open-notify.org")
+print(f"\nThis program uses NASA data and the open source Open Notify API. Check it out at {Fore.GREEN}http://open-notify.org{Style.RESET_ALL}")
 
-print("\nAbout the International Space Station (ISS)")
+print(f"\n{Fore.CYAN}About the International Space Station (ISS){Style.RESET_ALL}")
 print("===========================================")
 print("The ISS travels at approximately 17,150 miles per hour (27,600 kilometers per hour), and completes an orbit every 92 minutes.")
 
@@ -23,10 +25,10 @@ response = requests.get("http://api.open-notify.org/iss-pass.json", params = par
 # jsonify the response.
 iss_data = response.json()
 
-print(f"\nISS Pass Data for your location ({parameters['lat']} longitude: {parameters['lon']})")
+print(f"\n{Fore.CYAN}ISS Pass Data for your location{Style.RESET_ALL} ({Fore.GREEN}latitude:{Style.RESET_ALL} {Fore.YELLOW}{parameters['lat']} {Style.RESET_ALL}{Fore.GREEN}longitude:{Style.RESET_ALL} {Fore.YELLOW}{parameters['lon']}{Style.RESET_ALL})")
 print("===============================")
 for datapoint in iss_data['response']:
-    print(f"Risetime: {datetime.utcfromtimestamp(datapoint['risetime']).strftime('%H:%M:%S')}  Duration: {datapoint['duration']} seconds")
+    print(f"{Fore.GREEN}Risetime:{Style.RESET_ALL} {Fore.YELLOW}{datetime.utcfromtimestamp(datapoint['risetime']).strftime('%H:%M:%S')}{Style.RESET_ALL}  {Fore.GREEN}Duration:{Style.RESET_ALL} {Fore.YELLOW}{datapoint['duration']} seconds{Style.RESET_ALL}")
 
 # ISS Current Location
 ###############################################
@@ -38,10 +40,10 @@ iss_loc = response.json()
 
 ts = int(iss_loc['timestamp'])
 
-print("\nThe ISS is currently at:")
+print(f"\n{Fore.CYAN}The ISS is currently at:{Style.RESET_ALL}")
 print("========================")
-print(f"Position: \nLATITUDE: {iss_loc['iss_position']['latitude']}  LONGITUDE: {iss_loc['iss_position']['longitude']}" )
-print(f"\nDate/Time: \n{datetime.utcfromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')}")
+print(f"{Fore.GREEN}Position:{Style.RESET_ALL} \nLATITUDE: {Fore.YELLOW}{iss_loc['iss_position']['latitude']}{Style.RESET_ALL}  LONGITUDE: {Fore.YELLOW}{iss_loc['iss_position']['longitude']}{Style.RESET_ALL}" )
+print(f"\n{Fore.GREEN}Date/Time:{Style.RESET_ALL} \n{datetime.utcfromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')}{Style.RESET_ALL}")
 
 
 # People in Space
@@ -52,6 +54,6 @@ response = requests.get("http://api.open-notify.org/astros.json")
 
 astros = response.json()
 
-print("\nHow many astronauts are in space right now?")
+print(f"\n{Fore.CYAN}How many astronauts are in space right now?{Style.RESET_ALL}")
 print("===========================================")
-print(f"There are currently {astros['number']} astronauts in space.")
+print(f"There are currently {Fore.YELLOW}{astros['number']} {Style.RESET_ALL}astronauts in space.\n")
