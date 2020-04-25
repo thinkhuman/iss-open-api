@@ -8,7 +8,7 @@ print("\nThis program uses NASA data and the open source Open Notify API. Check 
 
 print("\nAbout the International Space Station (ISS)")
 print("===========================================")
-print("The ISS travels at approximately 17,150 MPH and completes an orbit every 92 minutes.")
+print("The ISS travels at approximately 17,150 miles per hour (27,600 kilometers per hour), and completes an orbit every 92 minutes.")
 
 
 # ISS Pass Times
