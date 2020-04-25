@@ -23,10 +23,10 @@ response = requests.get("http://api.open-notify.org/iss-pass.json", params = par
 # jsonify the response.
 iss_data = response.json()
 
-print("\nISS Pass Data for your location (latitude: {} longitude: {})".format(parameters['lat'], parameters['lon']))
+print(f"\nISS Pass Data for your location ({parameters['lat']} longitude: {parameters['lon']})")
 print("===============================")
 for datapoint in iss_data['response']:
-    print("Risetime: {}  Duration: {} sec ".format( (datetime.utcfromtimestamp(datapoint['risetime']).strftime('%H:%M:%S')),datapoint['duration']  ))
+    print(f"Risetime: {datetime.utcfromtimestamp(datapoint['risetime']).strftime('%H:%M:%S')}  Duration: {datapoint['duration']} seconds")
 
 # ISS Current Location
 ###############################################
@@ -40,8 +40,8 @@ ts = int(iss_loc['timestamp'])
 
 print("\nThe ISS is currently at:")
 print("========================")
-print("Position: \nLATITUDE: {}  LONGITUDE: {}".format(iss_loc["iss_position"]['latitude'], iss_loc["iss_position"]['longitude']) )
-print("\nDate/Time: \n{}".format(datetime.utcfromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')))
+print(f"Position: \nLATITUDE: {iss_loc['iss_position']['latitude']}  LONGITUDE: {iss_loc['iss_position']['longitude']}" )
+print(f"\nDate/Time: \n{datetime.utcfromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')}")
 
 
 # People in Space
@@ -54,4 +54,4 @@ astros = response.json()
 
 print("\nHow many astronauts are in space right now?")
 print("===========================================")
-print("There are currently {} astronauts in space.\n".format(astros["number"]))
+print(f"There are currently {astros['number']} astronauts in space.")
